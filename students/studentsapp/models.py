@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import datetime
 
 class student(models.Model):
 	cName = models.CharField(max_length=20, null=False)
