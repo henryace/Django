@@ -1,10 +1,9 @@
 from django.contrib import admin
-from django.urls import path
 from studentsapp import views
+from django.urls import path, re_path 
 
 """
 update to 2.2.3 2019/7/22
-
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.2/topics/http/urls/
 Examples:
@@ -28,4 +27,16 @@ urlpatterns = [
 	path('listall/', views.listall),
     path('', views.index),
     path('index/', views.index),
+
+	path('post/', views.post), # POST 傳送表單
+	path('post1/', views.post1), #資料新增，資料不驗證
+	path('post2/', views.post2), #資料新增，資料作驗證
+
+	path('delete/', views.delete),
+	
+	path('edit/', views.edit), # 由 瀏覽器 開啟
+	path('edit/(\d+)/(\w+)$', views.edit), # 由 edit.html 按 送出 鈕
+
+	path(r'^edit2/(\d+)/(\w+)$', views.edit2),
+	path(r'^postform/$', views.postform), # 表單驗證
 ]

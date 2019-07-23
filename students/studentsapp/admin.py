@@ -8,7 +8,6 @@ class studentAdmin(admin.ModelAdmin):
 	search_fields=('cName',)
 	ordering=('id',)
 	
-# Register models
 admin.site.register(student,studentAdmin)
 
 	
@@ -16,6 +15,6 @@ admin.site.register(student,studentAdmin)
 #admin.site.register(student)	
 
 # 第二種方式，加入 ModelAdmin 類別，定義顯示欄位
-# class studentAdmin(admin.ModelAdmin):
-# 	list_display=('id','cName','cSex','cBirthday','cEmail','cPhone','cAddr')
-# admin.site.register(student,studentAdmin)
+#class studentAdmin(admin.ModelAdmin):
+#	list_display=('id','cName','cSex','cBirthday','cEmail','cPhone','cAddr')
+#admin.site.register(student,studentAdmin)
