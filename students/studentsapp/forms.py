@@ -1,5 +1,6 @@
 from django import forms
 
+# 繼承forms.Form物件
 class PostForm(forms.Form):
 	cName = forms.CharField(max_length=20,initial='')
 	cSex = forms.CharField(max_length=2,initial='M')	

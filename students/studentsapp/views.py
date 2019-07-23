@@ -16,14 +16,16 @@ def listall(request):
 def index(request):  
 	students = student.objects.all().order_by('id')  #讀取資料表, 依 id 遞增排序
 	return render(request, "index.html", locals())
-	
+
+#網頁以POST傳出，檢查是不是用POST方式
 def post(request):
 	if request.method == "POST":		#如果是以POST方式才處理
 		mess = request.POST['username'] #取得表單輸入資料
 	else:
 		mess="表單資料尚未送出!"	
-	return render(request, "post.html", locals())
+	return render(request, "post.html", locals()) #將資料回傳到輸出Template <post.html>
 	
+#新網頁輸入表格資訊
 def post1(request):  #新增資料，資料不作驗證
 	if request.method == "POST":	  #如果是以POST方式才處理
 		cName = request.POST['cName'] #取得表單輸入資料
@@ -35,7 +37,7 @@ def post1(request):  #新增資料，資料不作驗證
 		#新增一筆記錄
 		unit = student.objects.create(cName=cName, cSex=cSex, cBirthday=cBirthday, cEmail=cEmail,cPhone=cPhone, cAddr=cAddr) 
 		unit.save()  #寫入資料庫
-		return redirect('/index/')	
+		return redirect('/index/')	#寫入資料庫後馬上return到index
 	else:
 		message = '請輸入資料(資料不作驗證)'
 	return render(request, "post1.html", locals())	
@@ -118,7 +120,8 @@ def edit2(request,id=None,mode=None):
       unit.save()  #寫入資料庫
       message = '已修改...'
       return redirect('/index/')
-	  
+
+# postform.html 回傳所有 postform 變數 
 def postform(request):  #新增資料，資料必須驗證
 	postform = PostForm()  #建立PostForm物件
-	return render(request, "postform.html", locals())		  
+	return render(request, "postform.html", locals())

@@ -32,11 +32,11 @@ urlpatterns = [
 	path('post1/', views.post1), #資料新增，資料不驗證
 	path('post2/', views.post2), #資料新增，資料作驗證
 
-	path('delete/', views.delete),
+	re_path(r'^delete/(\d+)/', views.delete),
 	
-	path('edit/', views.edit), # 由 瀏覽器 開啟
-	path('edit/(\d+)/(\w+)$', views.edit), # 由 edit.html 按 送出 鈕
+	re_path(r'^edit/(\d+)/$', views.edit), # 由 瀏覽器 開啟
+	re_path(r'^edit/(\d+)/(\w+)$', views.edit), # 由 edit.html 按 送出 鈕
 
-	path(r'^edit2/(\d+)/(\w+)$', views.edit2),
-	path(r'^postform/$', views.postform), # 表單驗證
+	re_path(r'^edit2/(\d+)/(\w+)$', views.edit2),
+	re_path(r'^postform/$', views.postform), # 表單驗證
 ]
