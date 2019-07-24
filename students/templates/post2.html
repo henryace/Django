@@ -26,4 +26,10 @@
 	</table>
 	<span style="color:red">{{message}}</span>
 	</form>
+	{% comment %} <form action="." method="POST" name="form1">
+		{% csrf_token %}
+		<p class="css1">姓名:{{postform.cName}}</p>
+		<p class="css2">郵件帳號：{{postform.cEmail}}</p>
+	</form> {% endcomment %}
+	{% comment %} 測試css樣板 {% endcomment %}
 {% endblock %}
