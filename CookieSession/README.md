@@ -1,1 +1,3 @@
 Cookies與Sessions
+1.Cookie的使用
+2.Session的使用

@@ -2,7 +2,12 @@ from django.shortcuts import render
 from django.http import HttpResponse
 import datetime
 
+# cookie
+# key為 session 的名稱, value為 session 的內容
 def set_cookie(request,key=None,value=None):
+	# 
+	# print out 'Cookie 儲存完畢!'
+	#
 	response = HttpResponse('Cookie 儲存完畢!')
 	response.set_cookie(key,value)
 	return response
