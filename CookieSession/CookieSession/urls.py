@@ -17,6 +17,8 @@ urlpatterns = [
 	path('', views.index),
 	path('index/', views.index),
 	
+	# 可以直接在index執行 
+	# no template html required
 	re_path(r'^set_session/(\w+)/(\w+)/$', views.set_session),
 	re_path(r'^get_session/(\w+)/$', views.get_session),
 	path('get_allsessions/', views.get_allsessions),

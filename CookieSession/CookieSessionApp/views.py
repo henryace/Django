@@ -6,6 +6,10 @@ import datetime
 # key為 session 的名稱, value為 session 的內容
 def set_cookie(request,key=None,value=None):
 	# 
+	# 以 HttpResponse 建立 response 物件
+	# 再以 response 物件 的 set_cookie
+	# 方法儲存 Cookie
+	#  
 	# print out 'Cookie 儲存完畢!'
 	#
 	response = HttpResponse('Cookie 儲存完畢!')
@@ -30,6 +34,15 @@ def delete_cookie(request,key=None):
 		return response
 	else:
 		return HttpResponse('No cookies:' + key)		
+
+
+# Note
+# expires=date
+# 指定Cookie的有效日期，當過了有效日期後，那個Cookie 就不會再儲存在瀏覽器；
+# date是GMT格式的有效日期。 如果不指定這個參數，該Cookie的有效日期就是使用者 
+# 退出瀏覽器時(End of Browser Session)。 
+#
+# strftime函數將日期換成指定的格式
 
 def index(request):
 	if "counter" in request.COOKIES:
@@ -100,12 +113,14 @@ def login(request):
 	#預設帳號密碼
 	username = "chiou"
 	password = "1234"
+	# http://127.0.0.1:8000/login/
 	if request.method == 'POST':
 		if not 'username' in request.session:
 			if request.POST['username']==username and request.POST['password']==password:
 				request.session['username']=username #儲存Session
 				message=username + " 您好，登入成功！"
 				status="login"
+	# 再輸入一次 http://127.0.0.1:8000/login/
 	else:
 		if 'username' in request.session:
 			if request.session['username']==username:
