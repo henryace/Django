@@ -4,7 +4,10 @@ from django.contrib import auth
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 
+# 使用 objects.all()方法讀取 User 資料表所有資料
+
 def index(request):
+	# 用 request.user.is_authenticated 檢查使用者是否認證過
 	if request.user.is_authenticated:
 	   name=request.user.username
 	return render(request, "index.html", locals())
@@ -34,10 +37,13 @@ def adduser(request):
 		user=User.objects.get(username="test")
 	except:
 		user=None
+		message = "沒有 test 帳號!"
+
 	if user!=None:
 		message = user.username + " 帳號已建立!"
 		return HttpResponse(message)
-	else:	# 建立 test 帳號			
+	else:	# 建立 test 帳號
+		# 建立帳號後，輸入郵件帳號、密碼			
 		user=User.objects.create_user("test","test@test.com.tw","aa123456")
 		user.first_name="wen" # 姓名
 		user.last_name="lin"  # 姓氏
